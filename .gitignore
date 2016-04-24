@@ -17,7 +17,10 @@
 [Rr]eleases/
 x64/
 x86/
+<<<<<<< HEAD
 build/
+=======
+>>>>>>> 3e8d9d36fd586d3f1250732eec0fb7eddc7cdcfc
 bld/
 [Bb]in/
 [Oo]bj/
@@ -76,6 +79,10 @@ _Chutzpah*
 ipch/
 *.aps
 *.ncb
+<<<<<<< HEAD
+=======
+*.opendb
+>>>>>>> 3e8d9d36fd586d3f1250732eec0fb7eddc7cdcfc
 *.opensdf
 *.sdf
 *.cachefile
@@ -150,6 +157,7 @@ publish/
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
+<<<<<<< HEAD
 
 # Windows Azure Build Output
 csx/
@@ -161,6 +169,26 @@ rfc/
 
 # Windows Store app package directory
 AppPackages/
+=======
+# NuGet v3's project.json files produces more ignoreable files
+*.nuget.props
+*.nuget.targets
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Microsoft Azure Emulator
+ecf/
+rcf/
+
+# Microsoft Azure ApplicationInsights config file
+ApplicationInsights.config
+
+# Windows Store app package directory
+AppPackages/
+BundleArtifacts/
+>>>>>>> 3e8d9d36fd586d3f1250732eec0fb7eddc7cdcfc
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -170,7 +198,10 @@ AppPackages/
 
 # Others
 ClientBin/
+<<<<<<< HEAD
 [Ss]tyle[Cc]op.*
+=======
+>>>>>>> 3e8d9d36fd586d3f1250732eec0fb7eddc7cdcfc
 ~$*
 *~
 *.dbmdl
@@ -228,6 +259,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+<<<<<<< HEAD
 
 # =========================
 # Operating System Files
@@ -279,3 +311,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+=======
+>>>>>>> 3e8d9d36fd586d3f1250732eec0fb7eddc7cdcfc
