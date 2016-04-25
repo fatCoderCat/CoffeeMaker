@@ -4,6 +4,9 @@ using CoffeeMaker.Hardware;
 
 namespace CoffeeMaker.Controllers
 {
+    /// <summary>
+    /// Controlls coffee maker.
+    /// </summary>
     public class MainController
     {
         private readonly CupSizeSelector _cupSizeSelector;

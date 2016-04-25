@@ -3,6 +3,9 @@ using CoffeeMaker.Hardware;
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Measure pressure in boiler.
+    /// </summary>
     public class PressureSensor
     {
         private readonly IPressureSensor _hardware;

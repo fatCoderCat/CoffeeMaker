@@ -3,6 +3,9 @@ using CoffeeMaker.Hardware;
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Sensor measuring volume of water.
+    /// </summary>
     public class VolumetricSensor
     {
         private readonly IVolumetricSensor _hardware;

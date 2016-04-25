@@ -2,6 +2,9 @@
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Lamp indicating the coffee maker is ready.
+    /// </summary>
     public class ReadyLamp
     {
         private readonly ILamp _harware;

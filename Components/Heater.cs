@@ -2,6 +2,9 @@
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Heating element. Heat the water in boiler.
+    /// </summary>
     public class Heater
     {
         private readonly IHeater _hardware;

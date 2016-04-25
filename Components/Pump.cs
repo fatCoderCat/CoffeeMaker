@@ -2,6 +2,9 @@
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Electric pump. Pumping the water.
+    /// </summary>
     public class Pump
     {
         private readonly IPump _hardware;

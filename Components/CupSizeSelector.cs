@@ -2,6 +2,9 @@
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Allows to chose cup size.
+    /// </summary>
     public class CupSizeSelector
     {
         private readonly ICupSizeSelector _hardware;

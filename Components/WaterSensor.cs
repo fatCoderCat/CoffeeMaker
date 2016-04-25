@@ -3,6 +3,9 @@ using CoffeeMaker.Hardware;
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Sensor indicationg availability of water in the tank.
+    /// </summary>
     public class WaterSensor
     {
         private readonly IWaterSensor _hardware;

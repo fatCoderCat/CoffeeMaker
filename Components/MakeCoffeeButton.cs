@@ -3,6 +3,9 @@ using CoffeeMaker.Hardware;
 
 namespace CoffeeMaker.Components
 {
+    /// <summary>
+    /// Button launch coffee brewing process.
+    /// </summary>
     public class MakeCoffeeButton
     {
         private readonly IButton _hardware;
