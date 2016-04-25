@@ -2,6 +2,6 @@
 {
     public interface IHeater
     {
-        void SetStatus(DeviceState state);
+        void SetHeaterStatus(DeviceState state);
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace CoffeeMaker.Hardware
+﻿using System;
+
+namespace CoffeeMaker.Hardware
 {
     public interface IPressureSensor
     {
-        PressureStatus GetPressureSensorStatus();
+        event EventHandler<PressureStatusEventArgs> PressureChanged;
     }
 }

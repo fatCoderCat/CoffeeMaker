@@ -1,10 +1,10 @@
 ﻿using CoffeeMaker.Hardware;
 
-namespace CoffeeMaker
+namespace CoffeeMaker.Components
 {
     public class Heater
     {
-        private IHeater _hardware;
+        private readonly IHeater _hardware;
 
         public Heater(IHeater hardware)
         {
@@ -13,12 +13,12 @@ namespace CoffeeMaker
 
         public void On()
         {
-            _hardware.SetStatus(DeviceState.On);
+            _hardware.SetHeaterStatus(DeviceState.On);
         }
 
         public void Off()
         {
-            _hardware.SetStatus(DeviceState.Off);
+            _hardware.SetHeaterStatus(DeviceState.Off);
         }
     }
 }

@@ -1,7 +1,10 @@
-﻿namespace CoffeeMaker.Hardware
+﻿using System;
+
+namespace CoffeeMaker.Hardware
 {
-    internal interface IWaterSensor
+    public interface IWaterSensor
     {
-        PressureStatus GetSensorStatus();
+        DeviceState GetWaterSensorStatus();
+        event EventHandler<WaterSensorEventArgs> WaterTankStatusChanged;
     }
 }

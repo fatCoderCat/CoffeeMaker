@@ -40,31 +40,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Boiler.cs" />
+    <Compile Include="BoilerStatusEventArgs.cs" />
+    <Compile Include="Components\CupSizeSelector.cs" />
+    <Compile Include="Components\MakeCoffeeButton.cs" />
     <Compile Include="Components\PressureSensor.cs" />
+    <Compile Include="CupSize.cs" />
+    <Compile Include="PressureStatusEventArgs.cs" />
+    <Compile Include="Components\ReadyLamp.cs" />
     <Compile Include="Components\SteamValve.cs" />
+    <Compile Include="Components\VolumetricSensor.cs" />
     <Compile Include="Controllers\BoilerController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="DeviceState.cs" />
     <Compile Include="Hardware\IButton.cs" />
+    <Compile Include="Hardware\ICoffeeMakerApi.cs" />
+    <Compile Include="Hardware\ICupSizeSelector.cs" />
     <Compile Include="Hardware\IHeater.cs" />
     <Compile Include="Hardware\IBoilerApi.cs" />
+    <Compile Include="Hardware\ILamp.cs" />
     <Compile Include="Hardware\IPressureSensor.cs" />
     <Compile Include="Hardware\IPump.cs" />
-    <Compile Include="Hardware\ISteamTap.cs" />
     <Compile Include="Hardware\ISteamValve.cs" />
     <Compile Include="Hardware\ITemperatureSensor.cs" />
+    <Compile Include="Hardware\IVolumetricSensor.cs" />
     <Compile Include="Hardware\IWaterSensor.cs" />
-    <Compile Include="Hardware\IWaterTap.cs" />
-    <Compile Include="Hardware\Pump.cs" />
+    <Compile Include="Components\Pump.cs" />
     <Compile Include="Components\Heater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Components\ReliefSteamValve.cs" />
     <Compile Include="PressureStatus.cs" />
     <Compile Include="TemperatureStatus.cs" />
     <Compile Include="Components\TemperatureSensor.cs" />
-    <Compile Include="Components\WaterPump.cs" />
     <Compile Include="Components\WaterSensor.cs" />
-    <Compile Include="Components\WaterTank.cs" />
+    <Compile Include="TemperatureStatusEventArgs.cs" />
+    <Compile Include="WaterSensorEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

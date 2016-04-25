@@ -1,12 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CoffeeMaker.Hardware;
 
-namespace CoffeeMaker
+namespace CoffeeMaker.Components
 {
-    class WaterSensor
+    public class WaterSensor
     {
+        private readonly IWaterSensor _hardware;
+
+        public WaterSensor(IWaterSensor hardware)
+        {
+            _hardware = hardware;
+            _hardware.WaterTankStatusChanged += OnWaterTankStatusChanged;
+        }
+        
+        public bool IsWaterTankFull()
+        {
+            return _hardware.GetWaterSensorStatus() == DeviceState.On;
+        }
+
+        private void OnWaterTankStatusChanged(object sender, WaterSensorEventArgs args)
+        {
+            WaterTaankStatusChanged?.Invoke(sender, args);
+        }
+
+        public event EventHandler<WaterSensorEventArgs> WaterTaankStatusChanged;
     }
 }

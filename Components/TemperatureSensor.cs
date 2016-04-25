@@ -1,6 +1,7 @@
-﻿using CoffeeMaker.Hardware;
+﻿using System;
+using CoffeeMaker.Hardware;
 
-namespace CoffeeMaker
+namespace CoffeeMaker.Components
 {
     public class TemperatureSensor
     {
@@ -9,11 +10,14 @@ namespace CoffeeMaker
         public TemperatureSensor(ITemperatureSensor hardware)
         {
             _hardware = hardware;
+            _hardware.TemperatureIsChanged += OnTemperatureChanged;
         }
 
-        public TemperatureStatus GeTemperatureStatus()
+        private void OnTemperatureChanged(object sender, TemperatureStatusEventArgs args)
         {
-            return _hardware.GetSensorStatus();
+            TemperatureIsChanged?.Invoke(sender, args);
         }
+
+        public event EventHandler<TemperatureStatusEventArgs> TemperatureIsChanged;
     }
 }

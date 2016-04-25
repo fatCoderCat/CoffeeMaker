@@ -1,4 +1,5 @@
-﻿using CoffeeMaker.Hardware;
+﻿using System;
+using CoffeeMaker.Hardware;
 
 namespace CoffeeMaker.Components
 {
@@ -9,11 +10,14 @@ namespace CoffeeMaker.Components
         public PressureSensor(IPressureSensor hardware)
         {
             _hardware = hardware;
+            _hardware.PressureChanged += OnPressureChanged;
         }
 
-        public PressureStatus GetStatus()
+        private void OnPressureChanged(object sender, PressureStatusEventArgs args)
         {
-            return _hardware.GetPressureSensorStatus();
+            PressureChanged?.Invoke(sender, args);
         }
+
+        public EventHandler<PressureStatusEventArgs> PressureChanged;
     }
 }

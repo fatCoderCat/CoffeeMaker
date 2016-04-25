@@ -1,64 +1,95 @@
-﻿using System.Threading;
+﻿using System;
 using CoffeeMaker.Components;
 using CoffeeMaker.Hardware;
 
 namespace CoffeeMaker.Controllers
 {
-    internal class BoilerController
+    /// <summary>
+    /// Controlls boiling and steam generation processes.
+    /// </summary>
+    public class BoilerController
     {
-        private Timer _timer;
         private readonly Heater _heater;
         private readonly SteamValve _steamValve;
         private readonly PressureSensor _pressureSensor;
         private readonly TemperatureSensor _temperatureSensor;
 
-        private bool _steamValveIsOn;
-        private bool _heaterIsOn;
-
+        private bool _boilerIsReady;
+        
         public BoilerController(IBoilerApi hardwareApi)
         {
             _heater = new Heater(hardwareApi);
             _steamValve = new SteamValve(hardwareApi);
             _pressureSensor = new PressureSensor(hardwareApi);
             _temperatureSensor = new TemperatureSensor(hardwareApi);
-            _timer = new Timer(TimerElapsed, null, 0, 1000);
+            
+            _pressureSensor.PressureChanged += NormalizePressure;
+            _temperatureSensor.TemperatureIsChanged += NormalizeTemperature;
+
+            Init();
         }
 
-        private void TimerElapsed(object o)
-        {
-            NormalizePressure();
-            NormalizeTemperature();
-        }
-        //add possibility to make steam and add light
-        //add
 
-        private void NormalizePressure()
+        /// <summary>
+        /// Indicates wheather boiler is ready to brew.
+        /// </summary>
+        public bool BoilerIsReady
         {
-            var pressureStatus = _pressureSensor.GetStatus();
-            if (pressureStatus == PressureStatus.Warn && !_steamValveIsOn)
+            get
             {
+                return _boilerIsReady;
+            }
+            private set
+            {
+                if (value != _boilerIsReady)
+                {
+                    _boilerIsReady = value;
+                    BoilerStatusChanged?.Invoke(this, new BoilerStatusEventArgs { BoilerIsReady = _boilerIsReady });
+                }
+            }
+        }
+
+        public event EventHandler<BoilerStatusEventArgs> BoilerStatusChanged;
+
+        /// <summary>
+        /// Set initial state of hardware.
+        /// </summary>
+        private void Init()
+        {
+            _heater.On();
+            _steamValve.Off();
+            _boilerIsReady = false;
+        }
+        
+        /// <summary>
+        /// Hold the pressure in boiler.
+        /// </summary>
+        private void NormalizePressure(object x, PressureStatusEventArgs args)
+        {
+            if (args.PressureStatus == PressureStatus.Warn)
                 _steamValve.On();
-                _steamValveIsOn = true;
-            }
-            else if (pressureStatus == PressureStatus.Ok && _steamValveIsOn)
-            {
+            else if (args.PressureStatus == PressureStatus.Ok)
                 _steamValve.Off();
-                _steamValveIsOn = false;
-            }
         }
 
-        private void NormalizeTemperature()
+        /// <summary>
+        /// Hold the temperature in boiler.
+        /// </summary>
+        private void NormalizeTemperature(object x, TemperatureStatusEventArgs args)
         {
-            var temperatureStatus = _temperatureSensor.GeTemperatureStatus();
-            if (temperatureStatus == TemperatureStatus.Low && !_heaterIsOn)
+            if (args.TemperatureStatus == TemperatureStatus.Low)
             {
                 _heater.On();
-                _heaterIsOn = true;
+                BoilerIsReady = false;
             }
-            else if (temperatureStatus == TemperatureStatus.High && _heaterIsOn)
+            else if (args.TemperatureStatus == TemperatureStatus.High)
             {
                 _heater.Off();
-                _heaterIsOn = false;
+                BoilerIsReady = true;
+            }
+            else if (args.TemperatureStatus == TemperatureStatus.Normal)
+            {
+                BoilerIsReady = true;
             }
         }
     }

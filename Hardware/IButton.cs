@@ -1,7 +1,9 @@
-﻿namespace CoffeeMaker.Hardware
+﻿using System;
+
+namespace CoffeeMaker.Hardware
 {
     public interface IButton
     {
-        DeviceState GetButtonState();
+        event EventHandler ButtonPressed;
     }
 }

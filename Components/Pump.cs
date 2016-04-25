@@ -1,4 +1,6 @@
-﻿namespace CoffeeMaker.Hardware
+﻿using CoffeeMaker.Hardware;
+
+namespace CoffeeMaker.Components
 {
     public class Pump
     {

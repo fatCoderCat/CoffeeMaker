@@ -1,7 +1,9 @@
-﻿namespace CoffeeMaker.Hardware
+﻿using System;
+
+namespace CoffeeMaker.Hardware
 {
     public interface ITemperatureSensor
     {
-        TemperatureStatus GetSensorStatus();
+        event EventHandler<TemperatureStatusEventArgs> TemperatureIsChanged; 
     }
 }
